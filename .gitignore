@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+server/node_modules/
+
+# secrets & runtime state — NEVER commit
+.env
+server/.env
+server/claims.json
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# local harness config
+.claude/
+
+# loose source images at repo root (used copies live in site/assets/)
+/*.png

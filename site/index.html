@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>$HUSH — The Quietest Cat on Solana 🤫</title>
+<meta name="description" content="$HUSH is the cartoon cat memecoin that says shhh. Creator fees get airdropped back to holders. Boop the nose, hold the bag." />
+<link rel="icon" href="assets/cat-square.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- floating background shhh -->
+<div class="bg-floaties" aria-hidden="true"></div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a class="brand" href="#top">
+    <img src="assets/cat-square.png" alt="Hush cat" class="brand-pfp" />
+    <span class="brand-name">$HUSH</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#about">About</a>
+    <a href="#airdrop">Airdrop</a>
+    <a href="#memes">Meme Maker</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#how">How to Buy</a>
+  </nav>
+  <a class="btn btn-buy" href="https://pump.fun/coin/CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump" target="_blank" rel="noopener">Buy on pump.fun</a>
+</header>
+
+<!-- ===== HERO ===== -->
+<main id="top">
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge">🤫 Live on Solana</div>
+    <h1 class="title">Say <span class="wob">Hush.</span><br/>Hold <span class="hl">$HUSH.</span></h1>
+    <p class="subtitle">The internet's quietest cat got booped on the nose &mdash; and minted a coin about it. Cartoon vibes, real creator-fee airdrops, and a whole lotta <em>shhh</em>.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-big" href="https://pump.fun/coin/CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump" target="_blank" rel="noopener">🚀 Buy $HUSH</a>
+      <a class="btn btn-ghost" href="#airdrop">🎁 Claim Airdrop</a>
+    </div>
+
+    <!-- contract address pill -->
+    <div class="ca-card">
+      <span class="ca-label">Contract Address (CA)</span>
+      <div class="ca-row">
+        <code id="ca" class="ca-text">CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump</code>
+        <button class="btn btn-copy" id="copyCa" aria-label="Copy contract address">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="cat-frame">
+      <img src="assets/cat-square.png" alt="A golden cat getting booped on the nose" />
+      <div class="speech">shhh… 🤫</div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🤫 SHHH</span><span>🐱 BOOP THE NOSE</span><span>🎁 CREATOR FEES → HOLDERS</span><span>💎 HOLD $HUSH</span><span>🤫 SHHH</span><span>🐱 BOOP THE NOSE</span><span>🎁 CREATOR FEES → HOLDERS</span><span>💎 HOLD $HUSH</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section about">
+  <div class="card-art">
+    <img src="assets/cat-boop.png" alt="The hush cat getting booped on the nose" />
+  </div>
+  <div class="card-copy">
+    <h2 class="h2">Who is the <span class="hl">Hush Cat</span>? 🐾</h2>
+    <p>One quiet evening, a perfectly round golden cat sat on a bed. A finger approached. <strong>Boop.</strong> Right on the nose. The cat did not meow. The cat did not run. The cat simply said one thing:</p>
+    <p class="big-quote">"Hush." 🤫</p>
+    <p>That moment of pure, fluffy silence became a movement. $HUSH is a community-driven cartoon memecoin with no roadmap, no promises, and one rule: <strong>keep it quiet, keep it comfy, keep holding.</strong></p>
+  </div>
+</section>
+
+<!-- ===== AIRDROP ===== -->
+<section id="airdrop" class="section airdrop">
+  <div class="airdrop-head">
+    <h2 class="h2">🎁 Creator-Fee <span class="hl">Airdrop</span></h2>
+    <p class="lede">Every trade on pump.fun generates a <strong>creator fee</strong>. Instead of pocketing it, the Hush Cat scoops those fees into the reward wallet and <strong>airdrops them back to diamond-pawed holders</strong>, pro-rata to how much $HUSH you hold. All numbers below are read <strong>live from the Solana chain</strong>.</p>
+    <div class="net-banner" id="netBanner">🔌 Connecting to Solana…</div>
+  </div>
+
+  <!-- live vault stats -->
+  <div class="vault-stats">
+    <div class="stat">
+      <div class="stat-num" id="vaultSol">0.000</div>
+      <div class="stat-label">SOL in Reward Vault</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="nextDrop">--:--:--</div>
+      <div class="stat-label">Next Airdrop In</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="holderCount">0</div>
+      <div class="stat-label">Eligible Holders</div>
+    </div>
+  </div>
+
+  <!-- claim panel -->
+  <div class="claim-panel">
+    <div class="claim-step">
+      <h3>1. Connect</h3>
+      <button class="btn btn-big" id="connectBtn">🔌 Connect Wallet</button>
+      <p class="muted" id="walletStatus">Not connected</p>
+    </div>
+
+    <div class="claim-step">
+      <h3>2. Your Share</h3>
+      <div class="share-box">
+        <div class="share-amt"><span id="shareAmt">0.000</span> <small>SOL</small></div>
+        <div class="muted" id="shareNote">Connect to estimate your airdrop</div>
+      </div>
+    </div>
+
+    <div class="claim-step">
+      <h3>3. Claim</h3>
+      <button class="btn btn-big btn-claim" id="claimBtn" disabled>🎁 Claim Airdrop</button>
+      <p class="muted" id="claimStatus"></p>
+    </div>
+  </div>
+
+  <details class="creator-tools">
+    <summary>🛠️ Creator Tools (admin)</summary>
+    <p class="muted">Distribute a SOL budget of collected creator fees <strong>pro-rata to all live $HUSH holders</strong>. This builds the plan from a real on-chain holder snapshot. It only broadcasts transactions when the backend is <strong>ARMED</strong> with the creator wallet key (<code>server/.env</code>); otherwise it returns a safe dry-run plan.</p>
+    <div class="creator-row">
+      <input type="number" id="budgetInput" placeholder="SOL budget to airdrop" min="0" step="0.001" />
+      <button class="btn btn-ghost" id="distributeBtn">Distribute now → holders</button>
+    </div>
+    <p class="muted" id="creatorStatus"></p>
+  </details>
+</section>
+
+<!-- ===== MEME GENERATOR ===== -->
+<section id="memes" class="section memes">
+  <h2 class="h2 center">🎨 Hush <span class="hl">Meme Maker</span></h2>
+  <p class="lede center">Dress up the cat. Slap on a 🎩, some 🕶️, a 👑 — drag to move, grab the green dot to resize, the pink dot to rotate. Add top/bottom text and download your masterpiece.</p>
+
+  <div class="meme-studio">
+    <div class="meme-canvas-wrap">
+      <canvas id="memeCanvas" aria-label="Meme canvas"></canvas>
+    </div>
+
+    <div class="meme-controls">
+      <label class="ctrl-label">Base cat</label>
+      <div id="memeBases" class="meme-bases"></div>
+
+      <label class="ctrl-label">Top text</label>
+      <input type="text" id="topText" class="meme-input" placeholder="WHEN SOMEONE FUDS $HUSH" maxlength="40" />
+      <label class="ctrl-label">Bottom text</label>
+      <input type="text" id="bottomText" class="meme-input" placeholder="HUSH." maxlength="40" />
+
+      <label class="ctrl-label">Stickers &amp; hats</label>
+      <div id="stickerTray" class="sticker-tray"></div>
+
+      <div class="meme-buttons">
+        <button class="btn" id="deleteSticker">🗑️ Delete selected</button>
+        <button class="btn btn-ghost" id="clearMeme">♻️ Clear</button>
+        <button class="btn btn-big btn-claim" id="downloadMeme">⬇️ Download PNG</button>
+      </div>
+      <p class="muted">Tip: tap a sticker to select it. Press Delete to remove. Esc to deselect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOKENOMICS ===== -->
+<section id="tokenomics" class="section tokenomics">
+  <h2 class="h2 center">📊 <span class="hl">Tokenomics</span></h2>
+  <div class="tok-grid">
+    <div class="tok-card"><div class="tok-emoji">🪙</div><div class="tok-val">1B</div><div class="tok-key">Total Supply</div></div>
+    <div class="tok-card"><div class="tok-emoji">🤝</div><div class="tok-val">100%</div><div class="tok-key">Fair Launch</div></div>
+    <div class="tok-card"><div class="tok-emoji">🔥</div><div class="tok-val">0%</div><div class="tok-key">Team Tax</div></div>
+    <div class="tok-card"><div class="tok-emoji">🎁</div><div class="tok-val">→ Holders</div><div class="tok-key">Creator Fees</div></div>
+  </div>
+</section>
+
+<!-- ===== HOW TO BUY ===== -->
+<section id="how" class="section how">
+  <h2 class="h2 center">🛒 How to Buy <span class="hl">$HUSH</span></h2>
+  <div class="steps">
+    <div class="step-card"><span class="step-n">1</span><h3>Get a Wallet</h3><p>Download Phantom or Solflare and fund it with some SOL.</p></div>
+    <div class="step-card"><span class="step-n">2</span><h3>Copy the CA</h3><p>Grab the contract address from the top of this page.</p></div>
+    <div class="step-card"><span class="step-n">3</span><h3>Swap on pump.fun</h3><p>Paste the CA, choose your amount, and confirm the swap.</p></div>
+    <div class="step-card"><span class="step-n">4</span><h3>Say Hush 🤫</h3><p>Hold tight. Creator fees come back to you via airdrop.</p></div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <img src="assets/cat-boop.png" alt="Hush cat" class="footer-cat" />
+  <p class="footer-ca"><strong>CA:</strong> <code>CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump</code></p>
+  <div class="footer-links">
+    <a href="https://pump.fun/coin/CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump" target="_blank" rel="noopener">pump.fun</a>
+    <a href="#airdrop">Airdrop</a>
+    <a href="#top">Back to top ↑</a>
+  </div>
+  <p class="disclaimer">$HUSH is a meme coin with no intrinsic value or expectation of financial return. Cartoon cat for entertainment only. Do your own research. 🤫</p>
+</footer>
+</main>
+
+<!-- copy toast -->
+<div class="toast" id="toast">Copied! 🤫</div>
+
+<script src="app.js"></script>
+<script src="meme.js"></script>
+</body>
+</html>
