@@ -147,6 +147,17 @@ main{position:relative;z-index:1}
 .creator-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
 .creator-row input{font-family:'Fredoka';font-size:16px;padding:10px 14px;border:3px solid var(--ink);border-radius:14px;background:var(--cream);max-width:180px}
 
+/* ===== DEPOSIT CARD ===== */
+.deposit-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;text-align:left;
+  background:#fff;border:3px solid var(--ink);border-radius:var(--radius);padding:22px 24px;
+  box-shadow:6px 6px 0 var(--shadow);margin:0 auto 28px;max-width:860px}
+.deposit-info h3{font-family:'Baloo 2';font-size:22px;margin-bottom:6px}
+.deposit-info .ca-row{margin-top:12px}
+.deposit-qr{display:flex;flex-direction:column;align-items:center;gap:8px}
+.deposit-qr #qrBox{width:148px;height:148px;background:#fff;border:3px solid var(--ink);border-radius:14px;
+  padding:8px;display:grid;place-items:center;box-shadow:4px 4px 0 var(--shadow)}
+.deposit-qr #qrBox img,.deposit-qr #qrBox canvas{width:100%!important;height:100%!important}
+
 /* ===== NET BANNER ===== */
 .net-banner{display:inline-block;margin-top:16px;background:#fff;border:3px solid var(--ink);border-radius:999px;
   padding:8px 18px;font-weight:700;box-shadow:4px 4px 0 var(--shadow)}
@@ -212,5 +223,8 @@ main{position:relative;z-index:1}
   .about{grid-template-columns:1fr}
   .vault-stats,.claim-panel,.tok-grid,.steps{grid-template-columns:1fr}
   .meme-studio{grid-template-columns:1fr}
+  .deposit-card{grid-template-columns:1fr;text-align:center}
+  .deposit-card .ca-row{justify-content:center}
+  .deposit-qr{margin:0 auto}
   .subtitle{margin-left:auto;margin-right:auto}
 }

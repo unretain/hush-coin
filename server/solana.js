@@ -35,11 +35,16 @@ export function getPayer() {
   return payer;
 }
 
-// fee/vault wallet = configured FEE_WALLET, else the payer's pubkey
+// Default vault/deposit wallet (public address — safe to expose). Deposits can
+// be received here any time; sending airdrops out requires PAYER_SECRET_KEY for
+// this same wallet. Override with FEE_WALLET env if you use a different address.
+const DEFAULT_FEE_WALLET = "7YSmPgTLuJgMaUmNkzpkadxXcRKBYmivmZZkty9yE3d7";
+
+// fee/vault wallet = configured FEE_WALLET, else the payer's pubkey, else default
 export function feeWallet() {
   if (process.env.FEE_WALLET) return new PublicKey(process.env.FEE_WALLET.trim());
   if (payer) return payer.publicKey;
-  return null;
+  return new PublicKey(DEFAULT_FEE_WALLET);
 }
 
 export function status() {

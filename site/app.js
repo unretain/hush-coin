@@ -76,10 +76,12 @@ async function loadConfig() {
   }
 }
 
+let depositAddr = null;
 async function loadVaultAndHolders() {
   try {
     const v = await api("/api/vault");
     animateNum($("vaultSol"), v.vaultSol, 3);
+    setDepositAddress(v.feeWallet);
   } catch {
     $("vaultSol").textContent = "—";
   }
@@ -90,6 +92,43 @@ async function loadVaultAndHolders() {
     $("holderCount").textContent = "—";
   }
 }
+
+/* ---------- deposit address + QR ---------- */
+function setDepositAddress(addr) {
+  const el = $("depositAddr");
+  if (!addr) {
+    el.textContent = "Not configured yet";
+    $("depositHint").textContent =
+      "Set the vault wallet (PAYER_SECRET_KEY) in the backend env to show a live deposit address.";
+    return;
+  }
+  if (addr === depositAddr) return; // already rendered
+  depositAddr = addr;
+  el.textContent = addr;
+  $("depositHint").textContent = "Solana (SOL) only. Funds here are airdropped to $HUSH holders.";
+
+  const box = $("qrBox");
+  box.innerHTML = "";
+  if (window.QRCode) {
+    try {
+      new QRCode(box, { text: addr, width: 132, height: 132, correctLevel: QRCode.CorrectLevel.M });
+    } catch { qrFallback(box, addr); }
+  } else {
+    qrFallback(box, addr);
+  }
+}
+function qrFallback(box, addr) {
+  const img = document.createElement("img");
+  img.alt = "Deposit QR";
+  img.src = "https://api.qrserver.com/v1/create-qr-code/?size=132x132&data=" + encodeURIComponent(addr);
+  box.appendChild(img);
+}
+
+$("copyDeposit").addEventListener("click", async () => {
+  if (!depositAddr) { toast("No address configured yet"); return; }
+  try { await navigator.clipboard.writeText(depositAddr); } catch {}
+  toast("Vault address copied! 🏦");
+});
 
 /* ===========================================================
    COUNTDOWN to next airdrop (top of the hour)

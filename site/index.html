@@ -91,6 +91,23 @@
     <div class="net-banner" id="netBanner">🔌 Connecting to Solana…</div>
   </div>
 
+  <!-- deposit address -->
+  <div class="deposit-card">
+    <div class="deposit-info">
+      <h3>🏦 Airdrop Vault — deposit address</h3>
+      <p class="muted">Send SOL here to fund the next holder airdrop. Creator fees + any donations collected at this address get distributed pro-rata to $HUSH holders.</p>
+      <div class="ca-row">
+        <code id="depositAddr" class="ca-text">loading…</code>
+        <button class="btn btn-copy" id="copyDeposit" aria-label="Copy deposit address">Copy</button>
+      </div>
+      <p class="muted" id="depositHint"></p>
+    </div>
+    <div class="deposit-qr">
+      <div id="qrBox"></div>
+      <span class="muted">Scan to deposit</span>
+    </div>
+  </div>
+
   <!-- live vault stats -->
   <div class="vault-stats">
     <div class="stat">
@@ -211,6 +228,7 @@
 <!-- copy toast -->
 <div class="toast" id="toast">Copied! 🤫</div>
 
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="app.js"></script>
 <script src="meme.js"></script>
 </body>
