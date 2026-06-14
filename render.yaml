@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: hush-coin
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      # Reads real Solana data. Public RPC works but rate-limits the holder
+      # snapshot — set a provider RPC here for reliability.
+      - key: RPC_URL
+        value: https://api.mainnet-beta.solana.com
+      - key: HUSH_MINT
+        value: CvyAHeWHhuyGHWp8Rvu1j7FPSv5pJNdoLuTudd8Mpump
+      # Leave PAYER_SECRET_KEY / ARMED unset to stay in safe dry-run mode.
+      # Add them as SECRET env vars in the Render dashboard to send real SOL.

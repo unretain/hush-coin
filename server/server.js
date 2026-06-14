@@ -171,9 +171,11 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(SITE_DIR, "index.html"));
 });
 
-app.listen(PORT, "127.0.0.1", () => {
+// bind 0.0.0.0 so cloud hosts (Render, etc.) can reach it; localhost still works
+const HOST = process.env.HOST || "0.0.0.0";
+app.listen(PORT, HOST, () => {
   const s = status();
-  console.log(`\n🤫  $HUSH server running:  http://127.0.0.1:${PORT}`);
+  console.log(`\n🤫  $HUSH server running on ${HOST}:${PORT}  (open http://127.0.0.1:${PORT})`);
   console.log(`    RPC:     ${s.rpc}`);
   console.log(`    Mint:    ${s.mint}`);
   console.log(`    Mode:    ${s.canDistribute ? "✅ ARMED (real transfers)" : "🧪 DRY-RUN (reads real data, no transfers)"}`);
